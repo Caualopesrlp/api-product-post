@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Services\ProductService;
+use Exception;
 
 
 class ProductController extends Controller
@@ -14,6 +15,7 @@ class ProductController extends Controller
     {
         $this->productService = $productService;
     }
+    
     public function create()
     {
         return view('products.create');
@@ -21,10 +23,18 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        $data = $request->validated();
+        try {
 
-        $response = $this->productService->createProduct($data);
+            $data = $request->validated();
 
-        return $response;
+            $response = $this->productService->createProduct($data);
+
+            return $response;
+        } catch (Exception $e) {
+
+            return response()->json([
+                'message' => 'Não foi possível criar o produto.'
+            ], 500);
+        }
     }
 }
