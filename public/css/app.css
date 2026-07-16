@@ -1,0 +1,79 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card {
+    background-color: #1f1f1f;
+
+    width: 400px;
+
+    padding: 30px;
+
+    border-radius: 10px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+input {
+    padding: 10px;
+
+    border-radius: 5px;
+
+    border: 1px solid #555;
+
+    background-color: #121212;
+
+    color: white;
+}
+
+
+button {
+    margin-top: 15px;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+    border: none;
+
+    background-color: #444;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: #666;
+}
+
+
+.error {
+    color: #ff6b6b;
+}
+
+
+.success {
+    color: #6bff8a;
+}

@@ -6,7 +6,6 @@ use App\Http\Requests\StoreProductRequest;
 use App\Services\ProductService;
 use Exception;
 
-
 class ProductController extends Controller
 {
     private ProductService $productService;
@@ -15,7 +14,7 @@ class ProductController extends Controller
     {
         $this->productService = $productService;
     }
-    
+
     public function create()
     {
         return view('products.create');
@@ -29,12 +28,14 @@ class ProductController extends Controller
 
             $response = $this->productService->createProduct($data);
 
-            return $response;
+            return redirect()
+                ->route('products.create')
+                ->with('success', 'Produto criado com sucesso!');
         } catch (Exception $e) {
 
-            return response()->json([
-                'message' => 'Não foi possível criar o produto.'
-            ], 500);
+            return redirect()
+                ->route('products.create')
+                ->with('error', 'Não foi possível criar o produto!');
         }
     }
 }
